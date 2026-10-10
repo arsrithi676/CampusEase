@@ -1,4 +1,8 @@
 
+import HostelServices from "./hostel/HostelServices";
+import HostelPortalSelection from "./hostel/HostelPortalSelection";
+import WardenDashboard from "./hostel/WardenDashboard";
+
 import { useState } from "react";
 import "./App.css";
 
@@ -31,6 +35,31 @@ const services = [
 
 function App() {
   const [selectedService, setSelectedService] = useState(null);
+  
+  if (selectedService === "warden") {
+  return (
+    <div>
+      <button
+        onClick={() => setSelectedService(null)}
+        style={{ margin: "16px", padding: "10px 16px", cursor: "pointer" }}
+      >
+        ← Back to CampusEase
+      </button>
+
+      <WardenDashboard />
+    </div>
+  );
+}
+  
+  
+  
+  if (selectedService === "hostel") {
+  return (
+    <HostelPortalSelection
+      onBack={() => setSelectedService(null)}
+    />
+  );
+}
 
   return (
     <div className="app">

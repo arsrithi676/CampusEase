@@ -1,144 +1,324 @@
+import { useState } from "react";
 
-import HostelServices from "./hostel/HostelServices";
+import "./App.css";
+
+import Marketplace from "./marketplace/Marketplace";
+
 import HostelPortalSelection from "./hostel/HostelPortalSelection";
 import WardenDashboard from "./hostel/WardenDashboard";
-
-import { useState } from "react";
-import "./App.css";
 
 const services = [
   {
     icon: "🍽️",
-    title: "Main Canteens",
-    description: "Order meals and skip the queue.",
+    title: "Main Canteen",
+    description: "Explore meals, order food, and reduce waiting time.",
     detail: "canteens",
+    category: "FOOD & DINING",
   },
   {
     icon: "🌙",
     title: "Night Canteen",
-    description: "Order late-night snacks and meals.",
+    description: "Discover late-night snacks and meals on campus.",
     detail: "night",
+    category: "FOOD & DINING",
   },
   {
     icon: "🛍️",
     title: "Campus Store",
-    description: "Get groceries and daily essentials.",
+    description: "Find groceries and everyday campus essentials.",
     detail: "store",
+    category: "CAMPUS ESSENTIALS",
   },
   {
     icon: "🏠",
     title: "Hostel Services",
-    description: "Submit complaints and track updates.",
+    description: "Submit hostel complaints and track their progress.",
     detail: "hostel",
+    category: "STUDENT SERVICES",
+  },
+  {
+    icon: "🤝",
+    title: "Skill Marketplace",
+    description:
+      "Discover student services, share your skills, and explore learning resources.",
+    detail: "marketplace",
+    category: "SKILLS & LEARNING",
   },
 ];
 
 function App() {
   const [selectedService, setSelectedService] = useState(null);
-  
+
+  // Warden dashboard
   if (selectedService === "warden") {
-  return (
-    <div>
-      <button
-        onClick={() => setSelectedService(null)}
-        style={{ margin: "16px", padding: "10px 16px", cursor: "pointer" }}
-      >
-        ← Back to CampusEase
-      </button>
+    return (
+      <div className="module-page">
+        <button
+          className="back-button"
+          onClick={() => setSelectedService(null)}
+        >
+          ← Back to CampusEase
+        </button>
 
-      <WardenDashboard />
-    </div>
-  );
-}
-  
-  
-  
+        <WardenDashboard />
+      </div>
+    );
+  }
+
+  // Hostel portal
   if (selectedService === "hostel") {
-  return (
-    <HostelPortalSelection
-      onBack={() => setSelectedService(null)}
-    />
+    return (
+      <HostelPortalSelection
+        onBack={() => setSelectedService(null)}
+      />
+    );
+  }
+
+  // Marketplace module
+  if (selectedService === "marketplace") {
+    return (
+      <div className="module-page">
+        <div className="module-navigation">
+          <a
+            className="brand"
+            href="#home"
+            onClick={(event) => {
+              event.preventDefault();
+              setSelectedService(null);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            <span className="brand-icon">C</span>
+            CampusEase
+          </a>
+
+          <button
+            className="back-button"
+            onClick={() => setSelectedService(null)}
+          >
+            ← Back to Home
+          </button>
+        </div>
+
+        <Marketplace />
+      </div>
+    );
+  }
+
+  const activeService = services.find(
+    (service) => service.detail === selectedService
   );
-}
 
   return (
-    <div className="app">
+    <div className="app" id="home">
+      {/* Navigation */}
       <header className="navbar">
-        <a className="brand" href="#" onClick={() => setSelectedService(null)}>
+        <a
+          className="brand"
+          href="#home"
+          onClick={() => {
+            setSelectedService(null);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
           <span className="brand-icon">C</span>
-          CampusEase
+          <span>CampusEase</span>
         </a>
-        <span className="tagline">Your campus, made easier.</span>
-        <button className="login-button" onClick={() => alert("Login module coming soon!")}>
+
+        <span className="tagline">
+          Your campus, made easier.
+        </span>
+
+        <button
+          className="login-button"
+          onClick={() =>
+            window.alert(
+              "Student Login is a demo feature and is not available yet."
+            )
+          }
+        >
           Student Login
         </button>
       </header>
 
       <main>
+        {/* Hero */}
         <section className="hero">
-          <div className="hero-badge">GENESIS'26 · HACKATHON PROJECT</div>
-          <h1>Campus life,<br /><span>made simpler.</span></h1>
-          <p>
-            One platform for campus food, daily essentials, and hostel services.
-            Less waiting, more living.
-          </p>
-          <button
-            className="primary-button"
-            onClick={() => document.getElementById("services").scrollIntoView({ behavior: "smooth" })}
-          >
-            Explore Services ↓
-          </button>
-          <div className="hero-decoration decoration-one">✳</div>
-          <div className="hero-decoration decoration-two">✦</div>
+          <div className="hero-content">
+            <div className="hero-badge">
+              GENESIS'26 · HACKATHON PROJECT
+            </div>
+
+            <h1>
+              Campus life,
+              <br />
+              <span>made simpler.</span>
+            </h1>
+
+            <p>
+              One platform for campus food, everyday essentials,
+              hostel services, and student skills.
+              Spend less time waiting and more time learning.
+            </p>
+
+            <button
+              className="primary-button"
+              onClick={() =>
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Explore Services <span aria-hidden="true">↓</span>
+            </button>
+
+            <div
+              className="hero-decoration decoration-one"
+              aria-hidden="true"
+            >
+              ✳
+            </div>
+
+            <div
+              className="hero-decoration decoration-two"
+              aria-hidden="true"
+            >
+              ✦
+            </div>
+          </div>
         </section>
 
+        {/* Services */}
         <section className="services-section" id="services">
           <div className="section-heading">
-            <span className="eyebrow">EVERYTHING IN ONE PLACE</span>
+            <span className="eyebrow">
+              YOUR CAMPUS, CONNECTED
+            </span>
+
             <h2>What do you need today?</h2>
-            <p>Choose a service to get started.</p>
+
+            <p>
+              Access campus services from one convenient place.
+            </p>
           </div>
 
           <div className="service-grid">
             {services.map((service) => (
               <button
                 key={service.detail}
-                className={`service-card ${selectedService === service.detail ? "selected" : ""}`}
-                onClick={() => setSelectedService(service.detail)}
+                type="button"
+                className={`service-card ${
+                  selectedService === service.detail ? "selected" : ""
+                }`}
+                onClick={() => {
+                  setSelectedService(service.detail);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
-                <span className="service-icon">{service.icon}</span>
-                <span className="service-title">{service.title}</span>
-                <span className="service-description">{service.description}</span>
-                <span className="card-link">Open service ↗</span>
+                <span className="service-category">
+                  {service.category}
+                </span>
+
+                <span className="service-icon" aria-hidden="true">
+                  {service.icon}
+                </span>
+
+                <span className="service-title">
+                  {service.title}
+                </span>
+
+                <span className="service-description">
+                  {service.description}
+                </span>
+
+                <span className="card-link">
+                  Open service <span aria-hidden="true">↗</span>
+                </span>
               </button>
             ))}
           </div>
 
-          {selectedService && (
-            <div className="selection-panel">
-              <p>
-                You selected <strong>
-                  {services.find((service) => service.detail === selectedService)?.title}
-                </strong>.
-              </p>
-              <p>This module is ready for us to build next.</p>
-              <button className="primary-button" onClick={() => setSelectedService(null)}>
-                Back to services
-              </button>
-            </div>
-          )}
+          {/* Placeholder for services not yet integrated */}
+          {activeService &&
+            ["canteens", "night", "store"].includes(
+              activeService.detail
+            ) && (
+              <div className="selection-panel">
+                <span className="panel-icon">
+                  {activeService.icon}
+                </span>
+
+                <h3>{activeService.title}</h3>
+
+                <p>
+                  {activeService.description}
+                </p>
+
+                <p className="demo-notice">
+                  This service is awaiting integration with its
+                  existing module.
+                </p>
+
+                <button
+                  className="primary-button"
+                  onClick={() => setSelectedService(null)}
+                >
+                  Back to Services
+                </button>
+              </div>
+            )}
         </section>
 
-        <section className="benefits">
-          <div><strong>One platform</strong><span>Four campus services</span></div>
-          <div><strong>Less waiting</strong><span>Token-based ordering</span></div>
-          <div><strong>Clear updates</strong><span>Track orders and complaints</span></div>
+        {/* Benefits */}
+        <section className="benefits-section">
+          <div className="benefits-heading">
+            <span className="eyebrow">WHY CAMPUSEASE?</span>
+            <h2>A simpler campus experience</h2>
+          </div>
+
+          <div className="benefits">
+            <div className="benefit-item">
+              <span className="benefit-icon">⚡</span>
+              <strong>Save Time</strong>
+              <span>Access campus services conveniently.</span>
+            </div>
+
+            <div className="benefit-item">
+              <span className="benefit-icon">🎓</span>
+              <strong>Student Focused</strong>
+              <span>Designed around everyday campus needs.</span>
+            </div>
+
+            <div className="benefit-item">
+              <span className="benefit-icon">🔗</span>
+              <strong>One Platform</strong>
+              <span>Discover multiple campus services together.</span>
+            </div>
+          </div>
         </section>
       </main>
 
-      <footer>
-        <a className="brand footer-brand" href="#">CampusEase</a>
-        <p>Built for Genesis'26 · Amrita Vishwa Vidyapeetham</p>
+      {/* Footer */}
+      <footer className="app-footer">
+        <a
+          className="brand footer-brand"
+          href="#home"
+          onClick={() => {
+            setSelectedService(null);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          <span className="brand-icon">C</span>
+          CampusEase
+        </a>
+
+        <p>
+          Built for Genesis'26 · Amrita Vishwa Vidyapeetham
+        </p>
+
+        <span className="footer-caption">
+          Making campus life easier.
+        </span>
       </footer>
     </div>
   );

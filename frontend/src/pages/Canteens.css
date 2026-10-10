@@ -1,0 +1,1218 @@
+
+.canteen-module {
+  --canteen-primary: #2563eb;
+  --canteen-primary-dark: #1d4ed8;
+  --canteen-text: #172033;
+  --canteen-muted: #64748b;
+  --canteen-border: #e2e8f0;
+  --canteen-surface: #ffffff;
+  --canteen-background: #f5f7fb;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px;
+  color: var(--canteen-text);
+  background: var(--canteen-background);
+  font-family: Inter, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.canteen-module *,
+.canteen-module *::before,
+.canteen-module *::after {
+  box-sizing: border-box;
+}
+
+.canteen-module button,
+.canteen-module input,
+.canteen-module select {
+  font: inherit;
+}
+
+.canteen-module button {
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.canteen-module button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.canteen-module-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: hidden;
+  padding: 30px;
+  border-radius: 22px;
+  color: #ffffff;
+  background: linear-gradient(130deg, #172554, #1d4ed8 65%, #0e7490);
+  box-shadow: 0 12px 30px rgba(30, 64, 175, 0.15);
+}
+
+.canteen-header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.canteen-back {
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 9px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.canteen-back:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.canteen-header-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.13);
+  font-size: 40px;
+}
+
+.canteen-label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.canteen-module-header .canteen-label {
+  color: #bfdbfe;
+}
+
+.canteen-module-header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.15;
+}
+
+.canteen-module-header p {
+  max-width: 650px;
+  margin: 0;
+  color: #dbeafe;
+  line-height: 1.65;
+}
+
+.canteen-role-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 22px 0 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 16px;
+  background: var(--canteen-surface);
+}
+
+.canteen-role-panel .canteen-label {
+  margin: 0;
+}
+
+.canteen-role-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.canteen-role-buttons button,
+.canteen-tabs button {
+  position: relative;
+  padding: 10px 14px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 10px;
+  color: #334155;
+  background: #ffffff;
+  font-weight: 600;
+}
+
+.canteen-role-buttons button.active,
+.canteen-tabs button.active {
+  border-color: var(--canteen-primary);
+  color: #ffffff;
+  background: var(--canteen-primary);
+}
+
+.canteen-role-buttons button:hover,
+.canteen-tabs button:hover {
+  transform: translateY(-1px);
+}
+
+.canteen-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin: 16px 0;
+}
+
+.canteen-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 50px;
+  color: #1d4ed8;
+  background: #dbeafe;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.canteen-feedback {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 13px 16px;
+  border: 1px solid #bfdbfe;
+  border-radius: 11px;
+  color: #1e40af;
+  background: #eff6ff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.canteen-feedback button {
+  flex-shrink: 0;
+  padding: 0 2px;
+  border: 0;
+  color: #1e40af;
+  background: transparent;
+  font-size: 21px;
+}
+
+.canteen-content {
+  margin-top: 16px;
+  padding: 24px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 18px;
+  background: var(--canteen-surface);
+}
+
+.canteen-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.canteen-section-heading h2 {
+  margin: 0 0 6px;
+  font-size: 23px;
+}
+
+.canteen-section-heading p {
+  margin: 0;
+  color: var(--canteen-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.canteen-item-count {
+  color: var(--canteen-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.canteen-module input,
+.canteen-module select {
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  outline: none;
+  color: #1e293b;
+  background: #ffffff;
+}
+
+.canteen-module input:focus,
+.canteen-module select:focus {
+  border-color: var(--canteen-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.canteen-search {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.canteen-category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 22px;
+}
+
+.canteen-category-filters button {
+  padding: 8px 12px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 999px;
+  color: #475569;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.canteen-category-filters button.active {
+  border-color: var(--canteen-primary);
+  color: #ffffff;
+  background: var(--canteen-primary);
+}
+
+.canteen-food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.canteen-food-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 15px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.canteen-food-card:hover {
+  transform: translateY(-3px);
+  border-color: #bfdbfe;
+  box-shadow: 0 9px 22px rgba(15, 23, 42, 0.07);
+}
+
+.canteen-food-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.canteen-food-emoji,
+.canteen-cart-emoji,
+.canteen-admin-emoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #f1f5f9;
+  font-size: 27px;
+}
+
+.canteen-category {
+  align-self: flex-start;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.canteen-food-card h3 {
+  margin: 12px 0 18px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.canteen-food-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.canteen-food-bottom > strong {
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+.canteen-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.canteen-quantity button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  color: var(--canteen-primary);
+  background: #eff6ff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.canteen-quantity button:hover:not(:disabled) {
+  color: #ffffff;
+  background: var(--canteen-primary);
+}
+
+.canteen-quantity span {
+  min-width: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.canteen-cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.canteen-cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.canteen-cart-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.canteen-cart-info h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.canteen-cart-info p {
+  margin: 0;
+  color: var(--canteen-muted);
+  font-size: 13px;
+}
+
+.canteen-cart-subtotal {
+  white-space: nowrap;
+}
+
+/* Payment method selection */
+.canteen-payment-methods {
+  margin-top: 24px;
+}
+
+.canteen-payment-methods h3 {
+  margin: 0 0 13px;
+  font-size: 17px;
+}
+
+.canteen-payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 13px 14px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.canteen-payment-option:hover {
+  border-color: #93c5fd;
+}
+
+.canteen-payment-option.selected {
+  border-color: var(--canteen-primary);
+  background: #eff6ff;
+}
+
+.canteen-payment-option input[type="radio"] {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--canteen-primary);
+  flex-shrink: 0;
+}
+
+.canteen-payment-emoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #f1f5f9;
+  font-size: 22px;
+}
+
+.canteen-payment-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.canteen-payment-copy strong {
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.canteen-payment-copy small {
+  color: var(--canteen-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Checkout summary */
+.canteen-checkout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 22px;
+  padding: 18px 20px;
+  border: 1px solid #bfdbfe;
+  border-radius: 15px;
+  background: #eff6ff;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.canteen-total-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.canteen-total-row span {
+  color: #475569;
+  font-size: 13px;
+}
+
+.canteen-total-row strong {
+  font-size: 22px;
+}
+
+.canteen-checkout > button,
+.canteen-empty button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  background: var(--canteen-primary);
+  font-weight: 700;
+}
+
+.canteen-checkout > button:hover:not(:disabled),
+.canteen-empty button:hover {
+  background: var(--canteen-primary-dark);
+}
+
+.canteen-primary-button {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  background: var(--canteen-primary);
+  font-weight: 700;
+}
+
+.canteen-primary-button:hover:not(:disabled) {
+  background: var(--canteen-primary-dark);
+}
+
+.canteen-secondary-button {
+  padding: 10px 13px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 9px;
+  color: #334155;
+  background: #ffffff;
+  font-weight: 650;
+}
+
+.canteen-secondary-button:hover {
+  background: #f1f5f9;
+}
+
+.canteen-empty {
+  padding: 32px 18px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 13px;
+  text-align: center;
+  background: #f8fafc;
+}
+
+.canteen-empty > span {
+  font-size: 34px;
+}
+
+.canteen-empty h3 {
+  margin: 10px 0 7px;
+}
+
+.canteen-empty p {
+  margin: 0 0 16px;
+  color: var(--canteen-muted);
+  font-size: 14px;
+}
+
+/* Customer and staff order cards */
+.canteen-orders-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.canteen-order-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.canteen-order-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.canteen-order-top h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.canteen-order-date {
+  margin: 12px 0;
+  color: var(--canteen-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.canteen-order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 12px 0;
+  border-top: 1px solid var(--canteen-border);
+  border-bottom: 1px solid var(--canteen-border);
+}
+
+.canteen-order-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.canteen-order-item span {
+  min-width: 0;
+}
+
+.canteen-order-item strong {
+  white-space: nowrap;
+}
+
+.canteen-order-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 13px;
+  font-size: 14px;
+}
+
+.canteen-order-total strong {
+  font-size: 17px;
+}
+
+.canteen-order-payment {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 12px;
+}
+
+.canteen-order-payment span {
+  color: var(--canteen-muted);
+}
+
+.canteen-order-payment strong {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.payment-paid {
+  color: #15803d;
+}
+
+.payment-pending {
+  color: #92400e;
+}
+
+.canteen-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.status-available,
+.status-collected {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.status-sold-out,
+.status-cancelled {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.status-preparing {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.status-ready {
+  color: #166534;
+  background: #bbf7d0;
+}
+
+.canteen-status-control {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 16px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.canteen-status-control select {
+  width: 100%;
+}
+
+/* Staff login */
+.canteen-staff-login {
+  width: min(440px, 100%);
+  margin: 18px auto;
+  padding: 28px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.canteen-login-icon {
+  margin-bottom: 12px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.canteen-staff-login h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.canteen-staff-login > p {
+  margin: 8px 0 20px;
+  color: var(--canteen-muted);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.canteen-staff-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.canteen-staff-login label,
+.canteen-menu-form label,
+.canteen-admin-category-filter label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.canteen-login-error {
+  margin: 3px 0;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+/* Staff workspace and menu management */
+.canteen-staff-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 22px 0;
+  padding: 20px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.canteen-staff-welcome h2 {
+  margin: 0 0 7px;
+}
+
+.canteen-staff-welcome p {
+  margin: 0;
+  color: var(--canteen-muted);
+  font-size: 14px;
+}
+
+.canteen-menu-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding: 20px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.canteen-menu-form h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.canteen-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.canteen-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.canteen-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+
+.canteen-admin-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 24px 0 12px;
+}
+
+.canteen-admin-heading h3 {
+  margin: 0;
+}
+
+.canteen-admin-heading span {
+  color: var(--canteen-muted);
+  font-size: 13px;
+}
+
+.canteen-admin-category-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.canteen-admin-category-filter label {
+  flex-shrink: 0;
+}
+
+.canteen-admin-category-filter select {
+  min-width: 180px;
+}
+
+.canteen-admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.canteen-admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 15px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.canteen-admin-emoji {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+}
+
+.canteen-admin-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.canteen-admin-item h4 {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+
+.canteen-admin-item p {
+  margin: 0;
+  color: var(--canteen-muted);
+  font-size: 13px;
+}
+
+.canteen-admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.canteen-availability-button,
+.canteen-edit-button,
+.canteen-delete-button {
+  padding: 9px 11px;
+  border: 1px solid var(--canteen-border);
+  border-radius: 8px;
+  color: #334155;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.canteen-availability-button.sold-out {
+  border-color: #fed7aa;
+  color: #9a3412;
+  background: #fff7ed;
+}
+
+.canteen-delete-button {
+  border-color: #fecaca;
+  color: #b91c1c;
+  background: #fff7f7;
+}
+
+.canteen-edit-button:hover,
+.canteen-availability-button:hover {
+  background: #f1f5f9;
+}
+
+.canteen-delete-button:hover {
+  background: #fee2e2;
+}
+
+/* Demo payment modal */
+.canteen-payment-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.62);
+}
+
+.canteen-payment-modal {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  padding: 30px;
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  text-align: center;
+}
+
+.canteen-payment-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  padding: 0 5px;
+  border: 0;
+  color: #64748b;
+  background: transparent;
+  font-size: 28px;
+}
+
+.canteen-payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 16px;
+  border-radius: 18px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  font-size: 30px;
+}
+
+.canteen-payment-modal h2 {
+  margin: 0 0 8px;
+  color: #172554;
+  font-size: 23px;
+}
+
+.canteen-payment-modal > p {
+  margin: 0 0 20px;
+  color: var(--canteen-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.canteen-payment-summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #eff6ff;
+  text-align: left;
+}
+
+.canteen-payment-summary span {
+  color: #475569;
+  font-size: 13px;
+}
+
+.canteen-payment-summary strong {
+  color: #1d4ed8;
+  font-size: 13px;
+  text-align: right;
+}
+
+.canteen-payment-modal .canteen-primary-button,
+.canteen-payment-modal .canteen-secondary-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.canteen-demo-notice {
+  display: block;
+  margin-top: 18px;
+  color: var(--canteen-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+@media (max-width: 950px) {
+  .canteen-food-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .canteen-orders-list {
+    grid-template-columns: 1fr;
+  }
+
+  .canteen-admin-row {
+    flex-wrap: wrap;
+  }
+
+  .canteen-admin-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .canteen-module {
+    padding: 16px;
+  }
+
+  .canteen-module-header {
+    padding: 22px;
+  }
+
+  .canteen-header-left {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .canteen-header-badge {
+    width: 58px;
+    height: 58px;
+    font-size: 30px;
+  }
+
+  .canteen-role-panel {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .canteen-role-buttons {
+    width: 100%;
+  }
+
+  .canteen-role-buttons button {
+    flex: 1;
+  }
+
+  .canteen-content {
+    padding: 16px;
+  }
+
+  .canteen-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .canteen-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .canteen-admin-row {
+    align-items: flex-start;
+  }
+
+  .canteen-admin-category-filter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .canteen-admin-category-filter select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .canteen-module {
+    padding: 12px;
+  }
+
+  .canteen-module-header {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .canteen-back {
+    margin-bottom: 8px;
+  }
+
+  .canteen-food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .canteen-food-card {
+    padding: 15px;
+  }
+
+  .canteen-checkout {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .canteen-checkout > button {
+    width: 100%;
+  }
+
+  .canteen-cart-item {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .canteen-cart-info {
+    flex: 1 1 calc(100% - 70px);
+  }
+
+  .canteen-cart-subtotal {
+    margin-left: auto;
+  }
+
+  .canteen-staff-login {
+    padding: 20px;
+  }
+
+  .canteen-menu-form {
+    padding: 15px;
+  }
+
+  .canteen-admin-row {
+    gap: 10px;
+  }
+
+  .canteen-admin-item {
+    flex: 1 1 calc(100% - 70px);
+  }
+
+  .canteen-admin-actions {
+    justify-content: flex-start;
+  }
+
+  .canteen-payment-modal {
+    padding: 26px 20px;
+  }
+
+  .canteen-payment-option {
+    padding: 11px;
+  }
+
+  .canteen-tabs button {
+    flex: 1;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .canteen-order-card {
+    padding: 15px;
+  }
+}

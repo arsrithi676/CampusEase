@@ -1,0 +1,26 @@
+
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+const PORT = 5000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "CampusEase backend is running!"
+  });
+});
+
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "OK",
+    project: "CampusEase"
+  });
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`CampusEase backend running on port ${PORT}`);
+});

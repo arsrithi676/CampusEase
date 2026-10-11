@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./store.css";
 
@@ -7,11 +6,17 @@ export default function StaffLogin({ onLogin }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // Temporary demo credentials
+  const DEFAULT_STAFF_ID = "STAFF001";
+  const DEFAULT_PASSWORD = "Store@123";
+
   function handleLogin(e) {
     e.preventDefault();
 
-    // Demo credentials only
-    if (staffId === "STAFF001" && password === "Store@123") {
+    if (
+      staffId.trim() === DEFAULT_STAFF_ID &&
+      password === DEFAULT_PASSWORD
+    ) {
       setError("");
       onLogin();
     } else {
@@ -28,6 +33,7 @@ export default function StaffLogin({ onLogin }) {
         <label htmlFor="staffId">Staff ID</label>
         <input
           id="staffId"
+          type="text"
           value={staffId}
           onChange={(e) => setStaffId(e.target.value)}
           placeholder="Enter Staff ID"
@@ -44,7 +50,11 @@ export default function StaffLogin({ onLogin }) {
           required
         />
 
-        {error && <p className="staff-login-error">{error}</p>}
+        {error && (
+          <p className="staff-login-error" role="alert">
+            {error}
+          </p>
+        )}
 
         <button type="submit">Login</button>
       </form>

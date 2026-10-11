@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import "./HostelServices.css";
 
@@ -7,6 +8,8 @@ import {
   getAnnouncements,
 } from "./hostelStorage";
 
+import { calculateComplaintSeverity } from "./complaintSeverity";
+
 function HostelServices() {
   const [activeTab, setActiveTab] = useState("complaint");
   const [complaints, setComplaints] = useState(() => getComplaints());
@@ -14,20 +17,23 @@ function HostelServices() {
     () => getAnnouncements()
   );
 
-  const [form, setForm] = useState({
+  const initialForm = {
     title: "",
     category: "Electrical",
     room: "",
     description: "",
-  });
+    safetyRisk: "0",
+    severity: "1",
+    impact: "1",
+    immediateDanger: false,
+  };
 
+  const [form, setForm] = useState(initialForm);
   const [message, setMessage] = useState("");
 
   function openTab(tab) {
     setActiveTab(tab);
     setMessage("");
-
-    // Reload shared data when a tab is opened.
     setComplaints(getComplaints());
     setAnnouncements(getAnnouncements());
   }
@@ -55,14 +61,36 @@ function HostelServices() {
       return;
     }
 
+    let assessment;
+
+    try {
+      assessment = calculateComplaintSeverity({
+        safetyRisk: Number(form.safetyRisk),
+        severity: Number(form.severity),
+        impact: Number(form.impact),
+        immediateDanger: form.immediateDanger,
+      });
+    } catch {
+      setMessage("Please check the complaint assessment values.");
+      return;
+    }
+
     const complaint = {
       id: `CMP-${Date.now().toString().slice(-6)}`,
       title,
       category: form.category,
       room,
       description,
+      safetyRisk: Number(form.safetyRisk),
+      severity: Number(form.severity),
+      impact: Number(form.impact),
+      immediateDanger: form.immediateDanger,
+      severityScore: assessment.score,
+      priority: assessment.priority,
+      immediateReview: assessment.immediateReview,
       status: "SUBMITTED",
       date: new Date().toLocaleDateString(),
+      createdAt: new Date().toISOString(),
     };
 
     const updatedComplaints = [
@@ -72,14 +100,7 @@ function HostelServices() {
 
     saveComplaints(updatedComplaints);
     setComplaints(updatedComplaints);
-
-    setForm({
-      title: "",
-      category: "Electrical",
-      room: "",
-      description: "",
-    });
-
+    setForm({ ...initialForm });
     setMessage(`Complaint ${complaint.id} submitted successfully!`);
     setActiveTab("tracking");
   }
@@ -108,22 +129,18 @@ function HostelServices() {
 
           <div>
             <strong>
-              {
-                complaints.filter(
-                  (item) => item.status !== "RESOLVED"
-                ).length
-              }
+              {complaints.filter(
+                (item) => item.status !== "RESOLVED"
+              ).length}
             </strong>
             <span>Pending Complaints</span>
           </div>
 
           <div>
             <strong>
-              {
-                complaints.filter(
-                  (item) => item.status === "RESOLVED"
-                ).length
-              }
+              {complaints.filter(
+                (item) => item.status === "RESOLVED"
+              ).length}
             </strong>
             <span>Resolved Complaints</span>
           </div>
@@ -142,27 +159,21 @@ function HostelServices() {
 
         <div className="hostel-tabs">
           <button
-            className={
-              activeTab === "complaint" ? "active" : ""
-            }
+            className={activeTab === "complaint" ? "active" : ""}
             onClick={() => openTab("complaint")}
           >
             📝 Submit Complaint
           </button>
 
           <button
-            className={
-              activeTab === "tracking" ? "active" : ""
-            }
+            className={activeTab === "tracking" ? "active" : ""}
             onClick={() => openTab("tracking")}
           >
             📋 My Complaints
           </button>
 
           <button
-            className={
-              activeTab === "announcements" ? "active" : ""
-            }
+            className={activeTab === "announcements" ? "active" : ""}
             onClick={() => openTab("announcements")}
           >
             📢 Announcements
@@ -176,21 +187,17 @@ function HostelServices() {
         )}
 
         {activeTab === "complaint" && (
-          <form
-            className="complaint-form"
-            onSubmit={handleSubmit}
-          >
+          <form className="complaint-form" onSubmit={handleSubmit}>
             <h3>Report a Hostel Issue</h3>
 
             <p className="form-description">
-              Give us the details so the hostel warden can
-              review your issue.
+              Describe the problem and provide an initial assessment.
+              The warden should verify the severity and safety risks.
             </p>
 
             <div className="form-grid">
               <label>
                 Complaint Title
-
                 <input
                   name="title"
                   value={form.title}
@@ -203,7 +210,6 @@ function HostelServices() {
 
               <label>
                 Category
-
                 <select
                   name="category"
                   value={form.category}
@@ -220,7 +226,6 @@ function HostelServices() {
 
               <label>
                 Room Number
-
                 <input
                   name="room"
                   value={form.room}
@@ -233,7 +238,6 @@ function HostelServices() {
 
               <label className="full-width">
                 Describe the Problem
-
                 <textarea
                   name="description"
                   value={form.description}
@@ -244,12 +248,76 @@ function HostelServices() {
                   maxLength={1000}
                 />
               </label>
+
+              <label>
+                Safety Risk
+                <select
+                  name="safetyRisk"
+                  value={form.safetyRisk}
+                  onChange={handleChange}
+                >
+                  <option value="0">0 - No obvious risk</option>
+                  <option value="1">1 - Very low</option>
+                  <option value="2">2 - Low</option>
+                  <option value="3">3 - Moderate</option>
+                  <option value="4">4 - High</option>
+                  <option value="5">5 - Very high</option>
+                </select>
+              </label>
+
+              <label>
+                Problem Severity
+                <select
+                  name="severity"
+                  value={form.severity}
+                  onChange={handleChange}
+                >
+                  <option value="1">1 - Minor</option>
+                  <option value="2">2 - Mild</option>
+                  <option value="3">3 - Moderate</option>
+                  <option value="4">4 - Serious</option>
+                  <option value="5">5 - Very serious</option>
+                </select>
+              </label>
+
+              <label>
+                People Affected
+                <select
+                  name="impact"
+                  value={form.impact}
+                  onChange={handleChange}
+                >
+                  <option value="1">1 - One person</option>
+                  <option value="2">2 - A few people</option>
+                  <option value="3">3 - Several people</option>
+                  <option value="4">4 - Many people</option>
+                  <option value="5">5 - Entire block or more</option>
+                </select>
+              </label>
+
+              <label className="full-width">
+                <span>
+                  <input
+                    type="checkbox"
+                    name="immediateDanger"
+                    checked={form.immediateDanger}
+                    onChange={(event) => {
+                      setForm((previous) => ({
+                        ...previous,
+                        immediateDanger: event.target.checked,
+                      }));
+                    }}
+                  />
+                  {" "}Possible immediate danger
+                </span>
+                <span className="form-description">
+                  Tick this if someone may be in immediate danger.
+                  This should trigger urgent warden review.
+                </span>
+              </label>
             </div>
 
-            <button
-              className="hostel-submit"
-              type="submit"
-            >
+            <button className="hostel-submit" type="submit">
               Submit Complaint →
             </button>
           </form>
@@ -263,13 +331,11 @@ function HostelServices() {
               <div className="hostel-empty">
                 <span>📋</span>
                 <h4>No complaints yet</h4>
-
                 <p>
-                  Your submitted hostel complaints will
-                  appear here.
+                  Your submitted hostel complaints will appear here.
                 </p>
-
                 <button
+                  type="button"
                   className="hostel-secondary"
                   onClick={() => openTab("complaint")}
                 >
@@ -288,12 +354,13 @@ function HostelServices() {
                         <span className="complaint-id">
                           {complaint.id}
                         </span>
-
                         <h4>{complaint.title}</h4>
                       </div>
 
                       <span
-                        className={`status-pill ${complaint.status.toLowerCase()}`}
+                        className={`status-pill ${String(
+                          complaint.status
+                        ).toLowerCase()}`}
                       >
                         {complaint.status.replace("_", " ")}
                       </span>
@@ -302,14 +369,26 @@ function HostelServices() {
                     <p>{complaint.description}</p>
 
                     <div className="complaint-meta">
-                      <span>
-                        Category: {complaint.category}
-                      </span>
-
+                      <span>Category: {complaint.category}</span>
                       <span>Room: {complaint.room}</span>
-
                       <span>Date: {complaint.date}</span>
                     </div>
+
+                    {complaint.severityScore !== undefined && (
+                      <div className="complaint-meta">
+                        <span>
+                          Priority: {complaint.priority}
+                        </span>
+                        <span>
+                          Severity score: {complaint.severityScore}/40
+                        </span>
+                        {complaint.immediateReview && (
+                          <strong>
+                            ⚠️ Requires immediate review
+                          </strong>
+                        )}
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>
@@ -330,10 +409,7 @@ function HostelServices() {
                 className="announcement-card"
                 key={announcement.id}
               >
-                <div className="announcement-icon">
-                  📢
-                </div>
-
+                <div className="announcement-icon">📢</div>
                 <div>
                   <h4>{announcement.title}</h4>
                   <p>{announcement.message}</p>

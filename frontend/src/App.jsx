@@ -1,12 +1,11 @@
 import { useState } from "react";
-
 import "./App.css";
 
 import Marketplace from "./marketplace/Marketplace";
-
 import HostelPortalSelection from "./hostel/HostelPortalSelection";
 import WardenDashboard from "./hostel/WardenDashboard";
 import Canteens from "./pages/Canteens";
+import StorePage from "./Store/StorePage";
 
 const services = [
   {
@@ -75,6 +74,37 @@ function App() {
     );
   }
 
+  // Campus Store module
+  if (selectedService === "store") {
+    return (
+      <div className="module-page">
+        <div className="module-navigation">
+          <a
+            className="brand"
+            href="#home"
+            onClick={(event) => {
+              event.preventDefault();
+              setSelectedService(null);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            <span className="brand-icon">C</span>
+            CampusEase
+          </a>
+
+          <button
+            className="back-button"
+            onClick={() => setSelectedService(null)}
+          >
+            ← Back to Home
+          </button>
+        </div>
+
+        <StorePage />
+      </div>
+    );
+  }
+
   // Marketplace module
   if (selectedService === "marketplace") {
     return (
@@ -105,14 +135,23 @@ function App() {
       </div>
     );
   }
-  if (selectedService === "canteens" || selectedService === "night") {
-  return (
-    <Canteens
-      canteenName={selectedService === "night" ? "Night Canteen" : "Main Canteen"}
-      onBack={() => setSelectedService(null)}
-    />
-  );
-}
+
+  // Main and Night Canteen modules
+  if (
+    selectedService === "canteens" ||
+    selectedService === "night"
+  ) {
+    return (
+      <Canteens
+        canteenName={
+          selectedService === "night"
+            ? "Night Canteen"
+            : "Main Canteen"
+        }
+        onBack={() => setSelectedService(null)}
+      />
+    );
+  }
 
   const activeService = services.find(
     (service) => service.detail === selectedService
@@ -125,7 +164,8 @@ function App() {
         <a
           className="brand"
           href="#home"
-          onClick={() => {
+          onClick={(event) => {
+            event.preventDefault();
             setSelectedService(null);
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -217,11 +257,16 @@ function App() {
                 key={service.detail}
                 type="button"
                 className={`service-card ${
-                  selectedService === service.detail ? "selected" : ""
+                  selectedService === service.detail
+                    ? "selected"
+                    : ""
                 }`}
                 onClick={() => {
                   setSelectedService(service.detail);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
                 }}
               >
                 <span className="service-category">
@@ -247,9 +292,9 @@ function App() {
             ))}
           </div>
 
-          {/* Placeholder for services not yet integrated */}
+          {/* Placeholder for Main and Night Canteens only */}
           {activeService &&
-            ["canteens", "night", "store"].includes(
+            ["canteens", "night"].includes(
               activeService.detail
             ) && (
               <div className="selection-panel">
@@ -259,9 +304,7 @@ function App() {
 
                 <h3>{activeService.title}</h3>
 
-                <p>
-                  {activeService.description}
-                </p>
+                <p>{activeService.description}</p>
 
                 <p className="demo-notice">
                   This service is awaiting integration with its
@@ -289,19 +332,25 @@ function App() {
             <div className="benefit-item">
               <span className="benefit-icon">⚡</span>
               <strong>Save Time</strong>
-              <span>Access campus services conveniently.</span>
+              <span>
+                Access campus services conveniently.
+              </span>
             </div>
 
             <div className="benefit-item">
               <span className="benefit-icon">🎓</span>
               <strong>Student Focused</strong>
-              <span>Designed around everyday campus needs.</span>
+              <span>
+                Designed around everyday campus needs.
+              </span>
             </div>
 
             <div className="benefit-item">
               <span className="benefit-icon">🔗</span>
               <strong>One Platform</strong>
-              <span>Discover multiple campus services together.</span>
+              <span>
+                Discover multiple campus services together.
+              </span>
             </div>
           </div>
         </section>
@@ -312,9 +361,13 @@ function App() {
         <a
           className="brand footer-brand"
           href="#home"
-          onClick={() => {
+          onClick={(event) => {
+            event.preventDefault();
             setSelectedService(null);
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
           }}
         >
           <span className="brand-icon">C</span>

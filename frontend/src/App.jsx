@@ -6,6 +6,7 @@ import Marketplace from "./marketplace/Marketplace";
 
 import HostelPortalSelection from "./hostel/HostelPortalSelection";
 import WardenDashboard from "./hostel/WardenDashboard";
+import Canteens from "./pages/Canteens";
 
 const services = [
   {
@@ -104,6 +105,14 @@ function App() {
       </div>
     );
   }
+  if (selectedService === "canteens" || selectedService === "night") {
+  return (
+    <Canteens
+      canteenName={selectedService === "night" ? "Night Canteen" : "Main Canteen"}
+      onBack={() => setSelectedService(null)}
+    />
+  );
+}
 
   const activeService = services.find(
     (service) => service.detail === selectedService

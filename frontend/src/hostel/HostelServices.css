@@ -1,7 +1,12 @@
+/* =========================================
+   CAMPUSEASE HOSTEL SERVICES
+   RED AND WHITE THEME
+   ========================================= */
+
 .hostel-page {
   min-height: 100vh;
-  background: #f7f8fc;
-  color: #20243a;
+  background: #FFFFFF;
+  color: #292329;
   font-family: inherit;
 }
 
@@ -9,8 +14,8 @@
   position: relative;
   overflow: hidden;
   padding: 64px 8%;
-  color: white;
-  background: linear-gradient(120deg, #172554, #4338ca, #6366f1);
+  color: #FFFFFF;
+  background: #B5094B;
 }
 
 .hostel-badge,
@@ -23,24 +28,26 @@
 
 .hostel-badge {
   padding: 9px 13px;
-  border: 1px solid #ffffff45;
+  border: 1px solid #FFFFFF;
   border-radius: 20px;
-  background: #ffffff12;
+  background: transparent;
+  color: #FFFFFF;
 }
 
 .hostel-hero h1 {
   margin: 24px 0 12px;
+  color: #FFFFFF;
   font-size: clamp(32px, 5vw, 54px);
   line-height: 1.15;
 }
 
 .hostel-hero h1 span {
-  color: #c7d2fe;
+  color: #FFFFFF;
 }
 
 .hostel-hero > p {
   max-width: 600px;
-  color: #e0e7ff;
+  color: #FFFFFF;
   font-size: 16px;
   line-height: 1.8;
 }
@@ -58,17 +65,19 @@
   flex-direction: column;
   gap: 5px;
   padding: 17px 22px;
-  border: 1px solid #ffffff35;
-  border-radius: 14px;
-  background: #ffffff12;
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
+  background: transparent;
+  color: #FFFFFF;
 }
 
 .hostel-stats strong {
+  color: #FFFFFF;
   font-size: 28px;
 }
 
 .hostel-stats span {
-  color: #e0e7ff;
+  color: #FFFFFF;
   font-size: 12px;
 }
 
@@ -76,6 +85,7 @@
   width: min(1050px, 88%);
   margin: 0 auto;
   padding: 55px 0;
+  background: #FFFFFF;
 }
 
 .hostel-heading {
@@ -83,17 +93,18 @@
 }
 
 .hostel-eyebrow {
-  color: #6366f1;
+  color: #B5094B;
 }
 
 .hostel-heading h2 {
   margin: 10px 0;
+  color: #B5094B;
   font-size: clamp(26px, 4vw, 36px);
 }
 
 .hostel-heading p,
 .form-description {
-  color: #73788c;
+  color: #6B6267;
   line-height: 1.7;
 }
 
@@ -107,35 +118,44 @@
 .hostel-tabs button,
 .hostel-secondary {
   padding: 12px 17px;
-  border: 1px solid #e0e3ef;
-  border-radius: 10px;
-  background: white;
-  color: #41465e;
+  border: 1px solid #EADDE2;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #B5094B;
   cursor: pointer;
   font: inherit;
   font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.hostel-tabs button:hover,
+.hostel-secondary:hover {
+  border-color: #B5094B;
+  background: #FFF0F5;
 }
 
 .hostel-tabs button.active {
-  border-color: #4f46e5;
-  background: #4f46e5;
-  color: white;
+  border-color: #B5094B;
+  background: #B5094B;
+  color: #FFFFFF;
 }
 
 .complaint-form,
 .complaints-panel,
 .announcements-panel {
   padding: 28px;
-  border: 1px solid #e8eaf3;
-  border-radius: 18px;
-  background: white;
-  box-shadow: 0 8px 30px #20243a08;
+  border: 1px solid #EADDE2;
+  border-top: 3px solid #B5094B;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 8px 30px rgba(80, 0, 30, 0.05);
 }
 
 .complaint-form h3,
 .complaints-panel h3,
 .announcements-panel h3 {
   margin: 0;
+  color: #B5094B;
   font-size: 23px;
 }
 
@@ -150,6 +170,7 @@
   display: flex;
   flex-direction: column;
   gap: 9px;
+  color: #292329;
   font-size: 14px;
   font-weight: 700;
 }
@@ -160,19 +181,19 @@
   box-sizing: border-box;
   width: 100%;
   padding: 12px 13px;
-  border: 1px solid #dfe2ed;
-  border-radius: 9px;
+  border: 1px solid #EADDE2;
+  border-radius: 8px;
   outline: none;
-  background: #fcfcff;
-  color: #20243a;
+  background: #FFFFFF;
+  color: #292329;
   font: inherit;
 }
 
 .form-grid input:focus,
 .form-grid select:focus,
 .form-grid textarea:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px #6366f11a;
+  border-color: #B5094B;
+  box-shadow: 0 0 0 3px rgba(181, 9, 75, 0.12);
 }
 
 .form-grid textarea {
@@ -185,26 +206,28 @@
 
 .hostel-submit {
   padding: 13px 21px;
-  border: 0;
-  border-radius: 10px;
-  background: #4f46e5;
-  color: white;
+  border: 1px solid #B5094B;
+  border-radius: 8px;
+  background: #B5094B;
+  color: #FFFFFF;
   cursor: pointer;
   font: inherit;
   font-weight: 700;
+  transition: 0.2s ease;
 }
 
 .hostel-submit:hover {
-  background: #3730a3;
+  background: #8F063B;
+  border-color: #8F063B;
 }
 
 .hostel-message {
   margin-bottom: 20px;
   padding: 14px 16px;
-  border: 1px solid #a7f3d0;
-  border-radius: 10px;
-  background: #ecfdf5;
-  color: #065f46;
+  border: 1px solid #B5094B;
+  border-radius: 8px;
+  background: #FFF0F5;
+  color: #8F063B;
 }
 
 .hostel-empty {
@@ -218,11 +241,12 @@
 
 .hostel-empty h4 {
   margin-bottom: 8px;
+  color: #B5094B;
   font-size: 18px;
 }
 
 .hostel-empty p {
-  color: #73788c;
+  color: #6B6267;
 }
 
 .complaint-list {
@@ -233,9 +257,9 @@
 
 .complaint-card {
   padding: 20px;
-  border: 1px solid #e8eaf3;
-  border-radius: 13px;
-  background: #fdfdff;
+  border: 1px solid #EADDE2;
+  border-radius: 10px;
+  background: #FFFFFF;
 }
 
 .complaint-card-top {
@@ -246,47 +270,46 @@
 }
 
 .complaint-id {
-  color: #6366f1;
+  color: #B5094B;
   font-size: 12px;
   font-weight: 800;
 }
 
 .complaint-card h4 {
   margin: 7px 0;
+  color: #292329;
   font-size: 18px;
 }
 
 .complaint-card > p {
-  color: #73788c;
+  color: #6B6267;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
 
 .status-pill {
   padding: 7px 10px;
+  border: 1px solid #B5094B;
   border-radius: 20px;
-  background: #eef2ff;
-  color: #4338ca;
+  background: #FFF0F5;
+  color: #8F063B;
   font-size: 11px;
   font-weight: 800;
   white-space: nowrap;
 }
 
-.status-pill.resolved {
-  background: #dcfce7;
-  color: #166534;
-}
-
+.status-pill.resolved,
 .status-pill.in_progress {
-  background: #fef3c7;
-  color: #92400e;
+  border-color: #B5094B;
+  background: #FFF0F5;
+  color: #8F063B;
 }
 
 .complaint-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
-  color: #73788c;
+  color: #6B6267;
   font-size: 12px;
 }
 
@@ -295,9 +318,9 @@
   gap: 16px;
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #e8eaf3;
-  border-radius: 13px;
-  background: #fdfdff;
+  border: 1px solid #EADDE2;
+  border-radius: 10px;
+  background: #FFFFFF;
 }
 
 .announcement-icon {
@@ -306,31 +329,35 @@
   height: 44px;
   flex-shrink: 0;
   place-items: center;
-  border-radius: 12px;
-  background: #eef2ff;
+  border: 1px solid #B5094B;
+  border-radius: 8px;
+  background: #FFF0F5;
+  color: #B5094B;
   font-size: 22px;
 }
 
 .announcement-card h4 {
   margin: 0 0 8px;
+  color: #B5094B;
 }
 
 .announcement-card p {
   margin: 0 0 10px;
-  color: #73788c;
+  color: #6B6267;
   line-height: 1.7;
 }
 
 .announcement-card span {
-  color: #6366f1;
+  color: #B5094B;
   font-size: 12px;
   font-weight: 700;
 }
 
 .hostel-footer {
   padding: 22px;
-  border-top: 1px solid #e8eaf3;
-  color: #73788c;
+  border-top: 2px solid #B5094B;
+  background: #FFFFFF;
+  color: #B5094B;
   text-align: center;
   font-size: 13px;
 }

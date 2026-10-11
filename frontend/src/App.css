@@ -1,14 +1,16 @@
 /* =========================================
-   CAMPUSEASE - HOMEPAGE STYLES
+   CAMPUSEASE - RED AND WHITE THEME
    ========================================= */
 
 .app {
   min-height: 100vh;
   color: var(--text-primary);
-  background: var(--background);
+  background: #ffffff;
 }
 
-/* Navigation */
+/* =========================================
+   NAVIGATION BAR
+   ========================================= */
 
 .navbar {
   position: sticky;
@@ -23,11 +25,9 @@
   min-height: 76px;
   padding: 14px 7%;
 
-  background: rgba(255, 255, 255, 0.97);
-  border-bottom: 1px solid var(--border);
-
-  box-shadow: 0 2px 10px rgba(26, 36, 44, 0.035);
-  backdrop-filter: blur(12px);
+  background: #ffffff;
+  border-bottom: 3px solid var(--primary);
+  box-shadow: 0 2px 10px rgba(80, 0, 30, 0.06);
 }
 
 .brand {
@@ -53,7 +53,7 @@
   height: 39px;
   flex-shrink: 0;
 
-  border-radius: 11px;
+  border-radius: 6px;
   background: var(--primary);
   color: #ffffff;
 
@@ -84,10 +84,13 @@
 
 .login-button:hover {
   background: var(--primary-dark);
+  border-color: var(--primary-dark);
   transform: translateY(-1px);
 }
 
-/* Hero */
+/* =========================================
+   HERO SECTION
+   ========================================= */
 
 .hero {
   position: relative;
@@ -100,14 +103,7 @@
 
   padding: 70px 10%;
 
-  background:
-    linear-gradient(
-      115deg,
-      #5e1827 0%,
-      #7b2334 56%,
-      #96394c 100%
-    );
-
+  background: #B5094B;
   color: #ffffff;
 }
 
@@ -124,7 +120,7 @@
   position: absolute;
   z-index: -1;
 
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 50%;
 
   pointer-events: none;
@@ -154,7 +150,7 @@
 }
 
 .hero-badge {
-  color: #f2c5ce;
+  color: #ffffff;
 }
 
 .hero h1 {
@@ -169,17 +165,21 @@
 }
 
 .hero h1 span {
-  color: #f2c5ce;
+  color: #ffffff;
 }
 
 .hero p {
   max-width: 550px;
   margin-bottom: 12px;
 
-  color: rgba(255, 255, 255, 0.84);
+  color: #ffffff;
   font-size: 15px;
   line-height: 1.9;
 }
+
+/* =========================================
+   PRIMARY BUTTONS
+   ========================================= */
 
 .primary-button {
   display: inline-flex;
@@ -218,15 +218,15 @@
 }
 
 .hero .primary-button:hover {
-  background: #f7e9ed;
-  border-color: #f7e9ed;
+  background: #FFF0F5;
+  border-color: #FFF0F5;
 }
 
 .hero-decoration {
   position: absolute;
   z-index: -1;
 
-  color: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.1);
   font-size: 130px;
 
   pointer-events: none;
@@ -244,10 +244,13 @@
   font-size: 75px;
 }
 
-/* Services section */
+/* =========================================
+   SERVICES SECTION
+   ========================================= */
 
 .services-section {
   padding: 72px 8% 76px;
+  background: #ffffff;
 }
 
 .section-heading {
@@ -276,7 +279,9 @@
   font-size: 14px;
 }
 
-/* Service cards */
+/* =========================================
+   SERVICE CARDS
+   ========================================= */
 
 .service-grid {
   display: grid;
@@ -294,10 +299,10 @@
   min-height: 250px;
   padding: 23px;
 
-  border: 1px solid var(--border);
+  border: 1px solid #EADDE2;
   border-radius: var(--radius-md);
 
-  background: var(--surface);
+  background: #ffffff;
   color: var(--text-primary);
 
   box-shadow: var(--shadow-sm);
@@ -311,19 +316,19 @@
 .service-card:hover,
 .service-card.selected {
   transform: translateY(-4px);
-  border-color: rgba(123, 35, 52, 0.45);
+  border-color: var(--primary);
   box-shadow: var(--shadow-md);
 }
 
 .service-card:focus-visible {
-  outline: 3px solid rgba(123, 35, 52, 0.3);
+  outline: 3px solid rgba(181, 9, 75, 0.3);
   outline-offset: 3px;
 }
 
 .service-category {
   margin-bottom: 15px;
 
-  color: var(--text-secondary);
+  color: var(--primary);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 1px;
@@ -337,13 +342,14 @@
   height: 50px;
   margin-bottom: 17px;
 
-  border-radius: 13px;
-  background: var(--primary-light);
+  border-radius: 8px;
+  background: #FFF0F5;
 
   font-size: 25px;
 }
 
 .service-title {
+  color: var(--primary);
   font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 800;
@@ -371,17 +377,24 @@
   font-weight: 800;
 }
 
-/* Placeholder panel */
+.service-card:hover .card-link {
+  color: var(--primary-dark);
+}
+
+/* =========================================
+   SERVICE SELECTION PANEL
+   ========================================= */
 
 .selection-panel {
   max-width: 580px;
   margin: 28px auto 0;
   padding: 26px;
 
-  border: 1px solid #ead1d7;
+  border: 1px solid #EADDE2;
+  border-top: 4px solid var(--primary);
   border-radius: var(--radius-md);
 
-  background: #fff9fa;
+  background: #ffffff;
   text-align: center;
 }
 
@@ -393,6 +406,7 @@
 
 .selection-panel h3 {
   margin: 0 0 10px;
+  color: var(--primary);
   font-family: var(--font-heading);
   font-size: 21px;
 }
@@ -410,13 +424,15 @@
   margin-top: 8px;
 }
 
-/* Benefits */
+/* =========================================
+   BENEFITS SECTION
+   ========================================= */
 
 .benefits-section {
   padding: 55px 8% 65px;
 
   background: #ffffff;
-  border-top: 1px solid var(--border);
+  border-top: 3px solid var(--primary);
 }
 
 .benefits-heading {
@@ -444,9 +460,10 @@
 
   padding: 25px 18px;
 
-  border: 1px solid var(--border);
+  border: 1px solid #EADDE2;
+  border-top: 3px solid var(--primary);
   border-radius: var(--radius-md);
-  background: var(--surface);
+  background: #ffffff;
 
   text-align: center;
 }
@@ -458,13 +475,15 @@
   width: 46px;
   height: 46px;
 
-  border-radius: 12px;
-  background: var(--primary-light);
+  border-radius: 8px;
+  background: #FFF0F5;
+  color: var(--primary);
 
   font-size: 22px;
 }
 
 .benefit-item strong {
+  color: var(--primary);
   font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 800;
@@ -476,7 +495,9 @@
   line-height: 1.8;
 }
 
-/* Footer */
+/* =========================================
+   FOOTER
+   ========================================= */
 
 .app-footer {
   display: flex;
@@ -487,8 +508,8 @@
 
   padding: 27px 8%;
 
-  background: #f5f6f8;
-  border-top: 1px solid var(--border);
+  background: #ffffff;
+  border-top: 3px solid var(--primary);
 }
 
 .footer-brand {
@@ -502,16 +523,22 @@
 }
 
 .footer-caption {
-  color: var(--text-secondary);
+  color: var(--primary);
   font-size: 11px;
 }
 
-/* Module navigation */
+/* =========================================
+   MODULE PAGE
+   ========================================= */
 
 .module-page {
   min-height: 100vh;
-  background: var(--background);
+  background: #ffffff;
 }
+
+/* =========================================
+   MODULE NAVIGATION
+   ========================================= */
 
 .module-navigation {
   position: sticky;
@@ -527,7 +554,8 @@
   padding: 12px 5%;
 
   background: #ffffff;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(80, 0, 30, 0.05);
 }
 
 .back-button {
@@ -537,11 +565,11 @@
 
   padding: 10px 15px;
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--primary);
   border-radius: var(--radius-sm);
 
-  background: #ffffff;
-  color: var(--text-primary);
+  background: var(--primary);
+  color: #ffffff;
 
   font-size: 13px;
   font-weight: 700;
@@ -550,12 +578,39 @@
 }
 
 .back-button:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  background: var(--primary-light);
+  border-color: var(--primary-dark);
+  background: var(--primary-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-/* Responsive layout */
+/* =========================================
+   GENERAL RED-AND-WHITE CONTROLS
+   ========================================= */
+
+button:not(:disabled) {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+input,
+select,
+textarea {
+  border-color: #EADDE2;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  outline: 2px solid rgba(181, 9, 75, 0.12);
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT
+   ========================================= */
 
 @media (max-width: 1000px) {
   .navbar {
@@ -582,6 +637,10 @@
     padding-left: 5%;
   }
 }
+
+/* =========================================
+   MOBILE VIEW
+   ========================================= */
 
 @media (max-width: 640px) {
   .navbar {
@@ -691,6 +750,10 @@
     font-size: 11px;
   }
 }
+
+/* =========================================
+   EXTRA SMALL SCREENS
+   ========================================= */
 
 @media (max-width: 380px) {
   .service-grid {

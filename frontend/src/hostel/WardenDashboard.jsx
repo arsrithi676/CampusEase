@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./WardenDashboard.css";
 
@@ -71,7 +70,9 @@ function WardenDashboard() {
     const message = announcementForm.message.trim();
 
     if (!title || !message) {
-      setNotice("Please enter both a title and a message.");
+      setNotice(
+        "Please enter both a title and a message."
+      );
       return;
     }
 
@@ -108,46 +109,6 @@ function WardenDashboard() {
     (complaint) => complaint.status === "RESOLVED"
   ).length;
 
-  // Show unresolved complaints requiring immediate review first,
-  // then sort by severity score from highest to lowest.
-  const sortedComplaints = [...complaints].sort((a, b) => {
-    const aUnresolved = a.status !== "RESOLVED";
-    const bUnresolved = b.status !== "RESOLVED";
-
-    const aCritical =
-      aUnresolved && a.immediateReview === true;
-    const bCritical =
-      bUnresolved && b.immediateReview === true;
-
-    if (aCritical !== bCritical) {
-      return Number(bCritical) - Number(aCritical);
-    }
-
-    const aScore = Number(a.severityScore) || 0;
-    const bScore = Number(b.severityScore) || 0;
-
-    if (aUnresolved !== bUnresolved) {
-      return Number(bUnresolved) - Number(aUnresolved);
-    }
-
-    return bScore - aScore;
-  });
-
-  function getPriorityClass(priority) {
-    switch (priority) {
-      case "CRITICAL":
-        return "critical";
-      case "HIGH":
-        return "high";
-      case "MEDIUM":
-        return "medium";
-      case "LOW":
-        return "low";
-      default:
-        return "unassessed";
-    }
-  }
-
   return (
     <div className="warden-page">
       <header className="warden-header">
@@ -159,7 +120,8 @@ function WardenDashboard() {
           <h1>Warden Dashboard</h1>
 
           <p>
-            Manage hostel complaints and communicate with students.
+            Manage hostel complaints and communicate with
+            students.
           </p>
         </div>
 
@@ -233,7 +195,7 @@ function WardenDashboard() {
               <div>
                 <h2>Hostel Complaints</h2>
                 <p>
-                  Review complaint severity, priority and progress.
+                  Review student issues and update their progress.
                 </p>
               </div>
 
@@ -248,7 +210,7 @@ function WardenDashboard() {
               </p>
             ) : (
               <div className="warden-complaint-list">
-                {sortedComplaints.map((complaint) => (
+                {complaints.map((complaint) => (
                   <article
                     className="warden-complaint"
                     key={complaint.id}
@@ -263,9 +225,7 @@ function WardenDashboard() {
                       </div>
 
                       <span
-                        className={`warden-status ${String(
-                          complaint.status
-                        ).toLowerCase()}`}
+                        className={`warden-status ${complaint.status.toLowerCase()}`}
                       >
                         {complaint.status.replace("_", " ")}
                       </span>
@@ -285,70 +245,6 @@ function WardenDashboard() {
                       <span>Date: {complaint.date}</span>
                     </div>
 
-                    <div className="warden-severity">
-                      <h4>Severity Assessment</h4>
-
-                      {complaint.severityScore !== undefined ? (
-                        <>
-                          <div className="warden-metadata">
-                            <span>
-                              Score: {complaint.severityScore}/40
-                            </span>
-
-                            <span>
-                              Priority:{" "}
-                              {complaint.priority || "UNASSESSED"}
-                            </span>
-                          </div>
-
-                          <div className="warden-metadata">
-                            <span>
-                              Safety risk:{" "}
-                              {complaint.safetyRisk ?? "Not recorded"}
-                            </span>
-
-                            <span>
-                              Problem severity:{" "}
-                              {complaint.severity ?? "Not recorded"}
-                            </span>
-
-                            <span>
-                              People affected:{" "}
-                              {complaint.impact ?? "Not recorded"}
-                            </span>
-                          </div>
-
-                          <span
-                            className={`warden-priority ${getPriorityClass(
-                              complaint.priority
-                            )}`}
-                          >
-                            {complaint.priority || "UNASSESSED"}
-                          </span>
-                        </>
-                      ) : (
-                        <p>
-                          This is an older complaint or has not been
-                          assessed using the new scoring system.
-                        </p>
-                      )}
-
-                      {complaint.immediateReview && (
-                        <div
-                          className="warden-safety-alert"
-                          role="alert"
-                        >
-                          ⚠️ Immediate safety review required.
-                          Verify the reported risk urgently.
-                        </div>
-                      )}
-
-                      <p className="warden-assessment-note">
-                        Scores reflect the submitted assessment.
-                        Verify the details before deciding on action.
-                      </p>
-                    </div>
-
                     <label className="warden-status-control">
                       Update Complaint Status
 
@@ -362,7 +258,10 @@ function WardenDashboard() {
                         }
                       >
                         {statusOptions.map((status) => (
-                          <option key={status} value={status}>
+                          <option
+                            key={status}
+                            value={status}
+                          >
                             {status.replace("_", " ")}
                           </option>
                         ))}

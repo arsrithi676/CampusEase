@@ -1,20 +1,29 @@
+/* =========================================
+   HOSTEL PORTAL SELECTION
+   RED AND WHITE THEME
+   ========================================= */
+
 .portal-page {
   min-height: 100vh;
   padding: 28px;
   box-sizing: border-box;
-  background: linear-gradient(135deg, #f3f6ff, #edf8f5);
-  color: #17233d;
+  background: #FFFFFF;
+  color: #292329;
   font-family: Arial, sans-serif;
 }
 
 .portal-back {
   padding: 10px 16px;
-  border: 1px solid #d9dfeb;
-  border-radius: 10px;
-  background: white;
-  color: #263b62;
+  border: 1px solid #B5094B;
+  border-radius: 8px;
+  background: #B5094B;
+  color: #FFFFFF;
   cursor: pointer;
   font-size: 14px;
+}
+
+.portal-back:hover {
+  background: #8F063B;
 }
 
 .portal-header {
@@ -28,20 +37,21 @@
   display: grid;
   place-items: center;
   margin: 0 auto 16px;
-  border-radius: 18px;
-  background: #243f91;
-  color: white;
+  border-radius: 12px;
+  background: #B5094B;
+  color: #FFFFFF;
   font-size: 23px;
   font-weight: bold;
 }
 
 .portal-header h1 {
   margin: 0 0 10px;
+  color: #B5094B;
   font-size: clamp(28px, 4vw, 40px);
 }
 
 .portal-header p {
-  color: #66738b;
+  color: #6B6267;
 }
 
 .portal-options {
@@ -56,39 +66,42 @@
   padding: 32px 26px;
   min-height: 270px;
   text-align: left;
-  border: 1px solid #e0e6f0;
-  border-radius: 20px;
-  background: white;
+  border: 1px solid #EADDE2;
+  border-top: 3px solid #B5094B;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #292329;
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s;
 }
 
 .portal-card:hover {
   transform: translateY(-4px);
-  border-color: #8299e5;
+  border-color: #B5094B;
 }
 
 .portal-icon {
+  color: #B5094B;
   font-size: 36px;
 }
 
 .portal-card h2 {
   margin: 20px 0 12px;
   font-size: 23px;
-  color: #172554;
+  color: #B5094B;
   font-weight: 700;
 }
 
 .portal-card p {
   min-height: 48px;
-  color: #475569;
+  color: #6B6267;
   line-height: 1.6;
 }
 
 .portal-action {
   display: inline-block;
   margin-top: 20px;
-  color: #294ca9;
+  color: #B5094B;
   font-weight: bold;
 }
 
@@ -97,19 +110,21 @@
   box-sizing: border-box;
   margin: 0 auto;
   padding: 30px;
-  border: 1px solid #e0e6f0;
-  border-radius: 20px;
-  background: white;
+  border: 1px solid #EADDE2;
+  border-top: 3px solid #B5094B;
+  border-radius: 12px;
+  background: #FFFFFF;
 }
 
 .portal-login h2 {
   margin-top: 0;
+  color: #B5094B;
   text-align: center;
 }
 
 .portal-demo-note {
   text-align: center;
-  color: #68758c;
+  color: #6B6267;
   font-size: 13px;
   margin-bottom: 25px;
 }
@@ -117,6 +132,7 @@
 .portal-login label {
   display: block;
   margin: 18px 0 8px;
+  color: #292329;
   font-weight: bold;
   font-size: 14px;
 }
@@ -125,15 +141,17 @@
   width: 100%;
   box-sizing: border-box;
   padding: 13px;
-  border: 1px solid #d5dceb;
-  border-radius: 9px;
+  border: 1px solid #EADDE2;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #292329;
   font-size: 15px;
   outline: none;
 }
 
 .portal-login input:focus {
-  border-color: #4263c5;
-  box-shadow: 0 0 0 3px #4263c51a;
+  border-color: #B5094B;
+  box-shadow: 0 0 0 3px rgba(181, 9, 75, 0.12);
 }
 
 .portal-login-button {
@@ -141,37 +159,44 @@
   margin-top: 24px;
   padding: 14px;
   border: none;
-  border-radius: 9px;
-  background: #294ca9;
-  color: white;
+  border-radius: 8px;
+  background: #B5094B;
+  color: #FFFFFF;
   font-weight: bold;
   cursor: pointer;
 }
 
 .portal-login-button:hover {
-  background: #1e397f;
+  background: #8F063B;
 }
 
 .portal-switch {
   width: 100%;
   margin-top: 16px;
   padding: 10px;
-  border: none;
-  background: transparent;
-  color: #294ca9;
+  border: 1px solid #EADDE2;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #B5094B;
   cursor: pointer;
 }
 
+.portal-switch:hover {
+  background: #FFF0F5;
+}
+
 .portal-error {
-  color: #c62828;
+  color: #B5094B;
   font-size: 14px;
 }
 
 .portal-credentials {
   margin-top: 20px;
   padding: 14px;
-  border-radius: 10px;
-  background: #f1f4fb;
+  border: 1px solid #EADDE2;
+  border-radius: 8px;
+  background: #FFF0F5;
+  color: #8F063B;
   font-size: 13px;
 }
 
@@ -182,7 +207,7 @@
 .portal-footer {
   margin-top: 50px;
   text-align: center;
-  color: #7b879b;
+  color: #B5094B;
   font-size: 13px;
 }
 

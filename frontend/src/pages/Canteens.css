@@ -1216,3 +1216,203 @@
     padding: 15px;
   }
 }
+
+/* ==========================================
+   CampusEase - Amrita Portal Pink Theme
+   ========================================== */
+
+.canteen-module {
+  --canteen-primary: #B3084B;
+  --canteen-primary-dark: #8D1748;
+  --canteen-text: #343746;
+  --canteen-muted: #777C8B;
+  --canteen-border: #E0E3EB;
+  --canteen-surface: #FFFFFF;
+  --canteen-background: #EDF1F8;
+
+  color: var(--canteen-text);
+  background: var(--canteen-background);
+}
+
+/* Header */
+.canteen-module-header {
+  background: linear-gradient(
+    120deg,
+    #8D1748 0%,
+    #B3084B 58%,
+    #D12C6B 100%
+  );
+  box-shadow: 0 8px 24px rgba(179, 8, 75, 0.16);
+}
+
+.canteen-module-header .canteen-label {
+  color: #FFE0EC;
+}
+
+/* Role buttons and navigation tabs */
+.canteen-role-buttons button.active,
+.canteen-tabs button.active {
+  background: #B3084B;
+  border-color: #B3084B;
+  color: #FFFFFF;
+}
+
+.canteen-role-buttons button:hover,
+.canteen-tabs button:hover {
+  border-color: #B3084B;
+}
+
+/* Search fields */
+.canteen-module input:focus,
+.canteen-module select:focus {
+  border-color: #B3084B;
+  box-shadow: 0 0 0 3px rgba(179, 8, 75, 0.12);
+}
+
+/* Category filters: Tiffins, Meals, Snacks, etc. */
+.canteen-category-filters button {
+  color: #8D1748;
+  background: #FFFFFF;
+  border-color: #E0C2D0;
+}
+
+.canteen-category-filters button:hover {
+  color: #B3084B;
+  border-color: #B3084B;
+  background: #F9E7EF;
+}
+
+.canteen-category-filters button.active {
+  color: #FFFFFF;
+  background: #B3084B;
+  border-color: #B3084B;
+}
+
+/* Food category badges */
+.canteen-category {
+  color: #8D1748;
+  background: #F9E7EF;
+}
+
+/* Food cards */
+.canteen-food-card:hover {
+  border-color: #D98AA9;
+  box-shadow: 0 9px 22px rgba(179, 8, 75, 0.09);
+}
+
+/* Food, cart, staff and payment icons */
+.canteen-food-emoji,
+.canteen-cart-emoji,
+.canteen-admin-emoji,
+.canteen-payment-emoji {
+  background: #F9E7EF;
+}
+
+/* Plus and minus quantity buttons */
+.canteen-quantity button {
+  color: #B3084B;
+  background: #F9E7EF;
+  border-color: #E8B7CA;
+}
+
+.canteen-quantity button:hover:not(:disabled) {
+  color: #FFFFFF;
+  background: #B3084B;
+  border-color: #B3084B;
+}
+
+/* Checkout and primary buttons */
+.canteen-checkout {
+  background: #F9E7EF;
+  border-color: #E8B7CA;
+}
+
+.canteen-checkout > button,
+.canteen-empty button,
+.canteen-primary-button {
+  color: #FFFFFF;
+  background: #B3084B;
+  border-color: #B3084B;
+}
+
+.canteen-checkout > button:hover:not(:disabled),
+.canteen-empty button:hover,
+.canteen-primary-button:hover:not(:disabled) {
+  background: #8D1748;
+}
+
+/* Payment selection */
+.canteen-payment-option.selected {
+  background: #F9E7EF;
+  border-color: #B3084B;
+}
+
+.canteen-payment-option:hover {
+  border-color: #D98AA9;
+}
+
+.canteen-payment-option input[type="radio"] {
+  accent-color: #B3084B;
+}
+
+/* Payment modal */
+.canteen-payment-icon {
+  color: #B3084B;
+  background: #F9E7EF;
+}
+
+.canteen-payment-modal h2 {
+  color: #8D1748;
+}
+
+.canteen-payment-summary {
+  background: #F9E7EF;
+}
+
+.canteen-payment-summary strong {
+  color: #B3084B;
+}
+
+/* Staff dashboard */
+.canteen-admin-emoji {
+  background: #F9E7EF;
+}
+
+.canteen-edit-button:hover,
+.canteen-availability-button:hover {
+  color: #8D1748;
+  background: #F9E7EF;
+}
+
+.canteen-edit-button:focus-visible,
+.canteen-availability-button:focus-visible,
+.canteen-delete-button:focus-visible {
+  outline: 3px solid rgba(179, 8, 75, 0.2);
+}
+
+/* Feedback messages */
+.canteen-feedback {
+  color: #8D1748;
+  background: #F9E7EF;
+  border-color: #E8B7CA;
+}
+
+.canteen-feedback button {
+  color: #8D1748;
+}
+
+/* Staff menu management form */
+.canteen-menu-form {
+  background: #FFF8FB;
+  border-color: #E8B7CA;
+}
+
+/* Main content cards */
+.canteen-content,
+.canteen-role-panel,
+.canteen-staff-welcome,
+.canteen-staff-login,
+.canteen-order-card {
+  background: #FFFFFF;
+  border-color: #E0E3EB;
+}
